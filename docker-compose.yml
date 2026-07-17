@@ -12,8 +12,8 @@ services:
       - no-new-privileges:true
     tmpfs:
       - /tmp:size=16m,mode=1777
-    ports:
-      - "127.0.0.1:${SITE1_PORT:-8081}:8080"
+    expose:
+      - "8080"
     networks:
       - web
 
@@ -28,8 +28,29 @@ services:
       - no-new-privileges:true
     tmpfs:
       - /tmp:size=16m,mode=1777
+    expose:
+      - "8080"
+    networks:
+      - web
+
+  reverse-proxy:
+    image: devops-assessment-proxy:local
+    build:
+      context: ./nginx
+    init: true
+    restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    depends_on:
+      site1:
+        condition: service_healthy
+      site2:
+        condition: service_healthy
     ports:
-      - "127.0.0.1:${SITE2_PORT:-8082}:8080"
+      - "${PUBLIC_PORT:-8080}:8080"
     networks:
       - web
 

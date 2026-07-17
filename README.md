@@ -11,7 +11,7 @@ The repository is being delivered incrementally with one branch and pull request
 - `site1/` — responsive, accessible LumaStack company landing page built with semantic HTML, CSS, and vanilla JavaScript
 - `site2/` — responsive portfolio/about experience with an accessible saved theme preference
 - Automated HTML, CSS, JavaScript, Markdown, and formatting checks
-- Per-site non-root Nginx images managed through Docker Compose
+- Per-site non-root Nginx images behind a dedicated reverse-proxy container
 
 ## Engineering goals
 
@@ -59,12 +59,12 @@ Build and start both websites:
 docker compose up --build -d
 ```
 
-The initial direct local endpoints are:
+The reverse proxy is the only published service. Local endpoints are:
 
-- Site One: `http://127.0.0.1:8081`
-- Site Two: `http://127.0.0.1:8082`
+- Site One: `http://127.0.0.1:8080/site1/`
+- Site Two: `http://127.0.0.1:8080/site2/`
 
-Copy `.env.example` to `.env` only when different local ports are required. The reverse-proxy phase will replace these direct host bindings with the assessment’s final public routing model.
+Copy `.env.example` to `.env` only when a different public host port is required. The site containers use Compose networking and are not bound directly to host ports.
 
 Inspect health and stop the stack:
 
