@@ -9,6 +9,7 @@
     "lint:html": "html-validate \"site*/**/*.html\"",
     "lint:js": "eslint \"site*/**/*.js\"",
     "lint:markdown": "markdownlint-cli2",
+    "test:smoke": "node scripts/smoke-test.mjs",
     "check": "npm run lint:markdown && npm run lint:html && npm run lint:css && npm run lint:js && npm run format:check"
   },
   "devDependencies": {
