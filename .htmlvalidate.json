@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "html-validate:recommended",
+    "html-validate:document",
+    "html-validate:prettier"
+  ],
+  "rules": {
+    "long-title": "off",
+    "require-sri": "off"
+  }
+}

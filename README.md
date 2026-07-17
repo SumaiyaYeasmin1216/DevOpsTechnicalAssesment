@@ -4,7 +4,12 @@ Two independently accessible static websites deployed to one Linux server with D
 
 ## Status
 
-The repository is being delivered incrementally with one branch and pull request per functional phase. This bootstrap establishes repository conventions and continuous integration; website and deployment components follow in dedicated branches.
+The repository is being delivered incrementally with one branch and pull request per functional phase. The engineering baseline and Site One company landing page are implemented; Site Two and the deployment components follow in dedicated branches.
+
+## Implemented components
+
+- `site1/` — responsive, accessible LumaStack company landing page built with semantic HTML, CSS, and vanilla JavaScript
+- Automated HTML, CSS, JavaScript, Markdown, and formatting checks
 
 ## Engineering goals
 
