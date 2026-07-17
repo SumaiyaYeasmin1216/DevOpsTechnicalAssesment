@@ -1,0 +1,19 @@
+{
+  "name": "devops-technical-assessment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quality tooling for a two-site Docker, Nginx, and GitHub Actions assessment.",
+  "scripts": {
+    "format:check": "prettier --check .",
+    "lint:markdown": "markdownlint-cli2",
+    "check": "npm run lint:markdown && npm run format:check"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "0.23.1",
+    "prettier": "3.9.5"
+  },
+  "engines": {
+    "node": ">=22 <27"
+  },
+  "packageManager": "npm@10.9.3"
+}

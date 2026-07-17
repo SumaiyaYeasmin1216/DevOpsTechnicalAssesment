@@ -1,0 +1,21 @@
+# Dependencies and generated output
+node_modules/
+coverage/
+dist/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs and local-only notes
+*.log
+*.local.md
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
