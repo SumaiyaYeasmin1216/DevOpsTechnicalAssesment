@@ -1,0 +1,38 @@
+name: devops-technical-assessment
+
+services:
+  site1:
+    image: devops-assessment-site1:local
+    build:
+      context: ./site1
+    init: true
+    restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    ports:
+      - "127.0.0.1:${SITE1_PORT:-8081}:8080"
+    networks:
+      - web
+
+  site2:
+    image: devops-assessment-site2:local
+    build:
+      context: ./site2
+    init: true
+    restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    ports:
+      - "127.0.0.1:${SITE2_PORT:-8082}:8080"
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
