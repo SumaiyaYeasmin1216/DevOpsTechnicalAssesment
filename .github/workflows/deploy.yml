@@ -1,0 +1,46 @@
+name: CD
+
+on:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deployment-vmware
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to VMware Ubuntu host
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    runs-on:
+      - self-hosted
+      - linux
+      - x64
+      - devops-assessment
+    timeout-minutes: 15
+    env:
+      DEPLOY_PATH: /home/ubuntu/apps/DevOpsTechnicalAssesment
+      DEPLOY_COMMIT: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+      PUBLIC_PORT: 8080
+
+    steps:
+      - name: Check out the verified commit
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          ref: ${{ env.DEPLOY_COMMIT }}
+          persist-credentials: false
+
+      - name: Deploy and verify locally on the Linux host
+        shell: bash
+        run: bash "$GITHUB_WORKSPACE/deployment/deploy.sh"
