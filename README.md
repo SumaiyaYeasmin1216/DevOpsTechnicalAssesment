@@ -72,6 +72,7 @@ Inspect health and stop the stack:
 docker compose ps
 docker compose down
 ```
+
 ## CI/CD
 
 ### Completed
