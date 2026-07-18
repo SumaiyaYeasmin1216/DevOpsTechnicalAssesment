@@ -72,3 +72,35 @@ Inspect health and stop the stack:
 docker compose ps
 docker compose down
 ```
+## CI/CD
+
+### Completed
+
+- Git version control
+- GitHub repository
+- GitHub Actions Continuous Integration (CI)
+- Automated quality checks
+- Docker image build
+- Container integration testing
+- Local deployment verification
+
+### Deployment Status
+
+Linux deployment was partially completed as part of this assessment. A Linux environment was prepared and tested using Ubuntu Server on VMware to practice the deployment workflow and verify the project in a Linux-based environment.
+
+I also attempted to provision a public cloud Linux virtual machine for the final deployment. However, due to cloud subscription restrictions encountered during VM provisioning, the deployment could not be completed and the GitHub Actions Continuous Deployment (CD) pipeline could not be fully integrated with a public Linux server.
+
+The project is fully prepared for deployment, and the remaining configuration can be completed once a suitable Linux server and the required GitHub deployment credentials are available.
+
+## Future Improvements
+
+- Configure GitHub Actions Continuous Deployment (CD)
+- Deploy on a public Linux server
+- Enable HTTPS using SSL certificates
+- Automate production deployment
+
+---
+
+## Author
+
+**Sumaiya Yeasmin**
