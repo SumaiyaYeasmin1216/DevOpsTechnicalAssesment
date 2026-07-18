@@ -104,4 +104,4 @@ The project is fully prepared for deployment, and the remaining configuration ca
 
 ## Author
 
-**Sumaiya Yeasmin**
+Sumaiya Yeasmin
